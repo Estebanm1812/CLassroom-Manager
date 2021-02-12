@@ -2,6 +2,9 @@ package ui;
 
 import java.io.IOException;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -90,7 +93,8 @@ public class ClassroomGUI {
 	    public void initialize(){
 	    	
 	    }*/
-	    private void initializeStundentsList(){
+	    @SuppressWarnings("unused")
+		private void initializeStundentsList(){
 	    	ObservableList<Student> observableList;
 	    	observableList = FXCollections.observableArrayList(classroom.getStudents());
 	    	
@@ -134,5 +138,17 @@ public class ClassroomGUI {
 	    				alert.setContentText("The information is wrong or the Student doesnt Exist, please verified");
 	    				alert.showAndWait();
 	    			}	
-	    		}	
+	    	}
+	    @FXML
+	    void loadPfP(ActionEvent event)throws IOException {
+	    	
+	    	JFileChooser chooser = new JFileChooser();
+	        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+	                "JPG,PNG & GIF Images", "jpg", "gif","png");
+	        chooser.setFileFilter(filter);
+	        int returnVal = chooser.showOpenDialog(null);
+	        if(returnVal == JFileChooser.APPROVE_OPTION) {
+	        profileTxT.setText(chooser.getSelectedFile().getName());	
+	        }
+	    }   
 }

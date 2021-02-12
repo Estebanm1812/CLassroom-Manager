@@ -14,7 +14,9 @@ public class Student {
 	
 	private String birthDay;
 	
-	public Student(String userName, String password, String genre, String browser, String career, String birthDay) {
+	private String pictureLink;
+	
+	public Student(String userName, String password, String genre, String browser, String career, String birthDay, String pictureLink) {
 		
 		this.userName = userName;
 		this.password = password;
@@ -22,6 +24,7 @@ public class Student {
 		this.browser = browser;
 		this.career = career;
 		this.birthDay = birthDay;
+		this.pictureLink = pictureLink;
 		
 	}
 	public String getName() {

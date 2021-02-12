@@ -10,9 +10,9 @@ public class Classroom {
 	public Classroom() {
 		students = new ArrayList<Student>();
 	}
-	public void addStudent(String userName, String password, String career,String genre, String birthday, String browser ) {
+	public void addStudent(String userName, String password, String career,String genre, String birthday, String browser, String link ) {
 		
-		students.add(new Student(userName, password, genre, browser, career, birthday));
+		students.add(new Student(userName, password, genre, browser, career, birthday, link));
 		
 	}
 	public List<Student> getStudents(){

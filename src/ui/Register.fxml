@@ -6,7 +6,9 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -46,7 +48,7 @@
             <Label text="Password:" translateX="140.0" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="89.0" text="Profile Picture:" translateX="120.0" GridPane.rowIndex="2" />
             <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="Button" textAlignment="JUSTIFY" translateX="40.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadPfP" prefHeight="30.0" prefWidth="75.0" text="Load File" textAlignment="JUSTIFY" translateX="40.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <TextField fx:id="registerNameTxt" GridPane.columnIndex="1" />
             <TextField fx:id="profileTxT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <PasswordField fx:id="PasswordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -64,6 +66,13 @@
         </rowConstraints>
          <children>
             <Label text="Gender:" translateX="160.0" />
+            <RadioButton mnemonicParsing="false" text="Male" translateX="20.0" GridPane.columnIndex="1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="genderGloup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$genderGloup" translateX="-40.0" GridPane.columnIndex="2" />
+            <RadioButton mnemonicParsing="false" text="Other" toggleGroup="$genderGloup" translateX="-90.0" GridPane.columnIndex="3" />
          </children>
       </GridPane>
       <GridPane>
@@ -78,9 +87,9 @@
         </rowConstraints>
          <children>
             <Label text="Career:" translateX="160.0" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" translateX="20.0" GridPane.columnIndex="1" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="CheckBox" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <CheckBox mnemonicParsing="false" text="Software Engineering" translateX="20.0" GridPane.columnIndex="1" />
+            <CheckBox mnemonicParsing="false" text="Telematic Engineering" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox mnemonicParsing="false" text="Industrial Engineering" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <GridPane>
