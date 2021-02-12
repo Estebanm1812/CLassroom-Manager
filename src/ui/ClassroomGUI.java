@@ -18,6 +18,8 @@ import javafx.scene.layout.Pane;
 import model.Classroom;
 import model.Student;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -113,8 +115,24 @@ public class ClassroomGUI {
 	    @FXML
 	    void loadStudentsList(ActionEvent event) throws IOException{
 	    
+	    	String userName = txtUserName.getText();
+	    	String passWord = txtPassword.getText();
+	    	boolean canContiue = Classroom.findStudent(userName,passWord);
 	    	
 	    	
-	    	
-	    }
+	    			if(canContiue == true) {
+	    				FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("AccountList.fxml"));
+	    				fxmlLoader4.setController(this);
+	    				Parent addListPanel = fxmlLoader4.load();
+	    				mainBorderPanel.getChildren().clear();
+	    				mainBorderPanel.setCenter(addListPanel);
+	    			}else {
+	    			
+	    				Alert alert = new Alert(AlertType.INFORMATION);
+	    				alert.setTitle("Information Dialog");
+	    				alert.setHeaderText(null);
+	    				alert.setContentText("The information is wrong or the Student doesnt Exist, please verified");
+	    				alert.showAndWait();
+	    			}	
+	    		}	
 }

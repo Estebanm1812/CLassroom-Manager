@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Classroom {
 
-	private List<Student> students;
+	private static List<Student> students;
 	
 	public Classroom() {
 		students = new ArrayList<Student>();
@@ -20,7 +20,7 @@ public class Classroom {
 		return students;
 		
 	}
-	public boolean findStudent(String userName, String password) {
+	public static boolean findStudent(String userName, String password) {
 		
 		boolean found = false;
 		
