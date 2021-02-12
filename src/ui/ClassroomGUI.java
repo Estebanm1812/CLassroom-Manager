@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import model.Career;
 import model.Classroom;
 import model.Student;
 import javafx.scene.Parent;
@@ -27,9 +29,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-
+import javafx.stage.*;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ClassroomGUI {
 
@@ -52,7 +56,7 @@ public class ClassroomGUI {
 	    private DatePicker dateTxT;
 
 	    @FXML
-	    private ChoiceBox<?> browserBox;
+	    private ComboBox<String> browserBox;
 	    
 	    @FXML
 	    private Label userNameLabel;
@@ -105,12 +109,14 @@ public class ClassroomGUI {
 	    @FXML
 	    private RadioButton otherButton;
 	    
-	    private Classroom classroom; 
+	    private Classroom classroom;
+	    
+	    Career [] career;
 	    
 	    public ClassroomGUI(Classroom cr) {
 	    	
 	    	classroom = cr;
-	    	
+	    	career = new Career[2];
 	    }
 	    /*
 	    public void initialize(){
@@ -138,14 +144,19 @@ public class ClassroomGUI {
 	    	mainBorderPanel.getChildren().clear();
 	    	mainBorderPanel.setCenter(addStudentPane);
 	    	
-	    	maleButton.setText("Male");
+	    
 	    	maleButton.setToggleGroup(genderGloup);
 	    	
-	    	femaleButton.setText("Female");
+
 	    	femaleButton.setToggleGroup(genderGloup);
 	    	
-	    	otherButton.setText("Other");
+	  
 	    	otherButton.setToggleGroup(genderGloup);
+	    	
+	    	browserBox.getItems().addAll("Chrom","Opera","Microsoft Edge", "Safari");
+	    	
+	    	
+	    	
 	    }
 	    @FXML
 	    void loadStudentsList(ActionEvent event) throws IOException{
@@ -156,7 +167,7 @@ public class ClassroomGUI {
 	    	
 	    	
 	    			if(canContiue == true) {
-	    				FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("AccountList.fxml"));
+	    				FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("StudentsList.fxml"));
 	    				fxmlLoader4.setController(this);
 	    				Parent addListPanel = fxmlLoader4.load();
 	    				mainBorderPanel.getChildren().clear();
@@ -173,15 +184,91 @@ public class ClassroomGUI {
 	    @FXML
 	    void loadPfP(ActionEvent event)throws IOException {
 	    	
-	    	JFileChooser chooser = new JFileChooser();
-	        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-	                "JPG,PNG & GIF Images", "jpg", "gif","png");
-	        chooser.setFileFilter(filter);
-	        int returnVal = chooser.showOpenDialog(null);
-	        if(returnVal == JFileChooser.APPROVE_OPTION) {
-	        profileTxT.setText(chooser.getSelectedFile().getName());	
+	    	FileChooser fileChooser = new FileChooser();
+	    	fileChooser.getExtensionFilters().addAll( 
+	    			 new FileChooser.ExtensionFilter("All Images", "*.*"),
+	                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+	                 new FileChooser.ExtensionFilter("PNG", "*.png")
+	         );
+	    					
+			File selectedFile = fileChooser.showOpenDialog(null);
+	        if(selectedFile != null) {
+	        
+	        profileTxT.setText(selectedFile.getPath());
+	        
 	        }
+	        
 	    }
+	    @FXML
+	    void returnToLogin(ActionEvent event) throws IOException {
+	    FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("Login.fxml"));
+		    	
+		    	fxmlLoader4.setController(this);
+		    	Parent loginPanel = fxmlLoader4.load();
+		    	mainBorderPanel.getChildren().clear();
+		    	mainBorderPanel.setCenter(loginPanel);
+		    		
+	    }
+	    
+	    @FXML
+	    void createStudent(ActionEvent event)throws IOException {
+	    	
+	    String userName = registerNameTxt.getText();
+	    String password = registerPasswordTxt.getText();
+	    String pfp = profileTxT.getText();
+	    String genre = "Other";
+	    if(maleButton.isSelected()) {
+	    	
+	    	genre = "Male";
+	    	}else if(femaleButton.isSelected()){
+	    		
+	    	genre = "Female";	
+	    	}else {
+	    	genre = "Other";	
+	    		
+	    	}
+	    if(softwareCheckBox.isSelected()) {
+	    	
+	    	boolean out = false;
+	    	int pos = 0;
+	    	for(int i=0; i < career.length && out ==false;i++) {
+	    	
+	    	if(career[i]==null) {
+	    			out = true;
+	    			pos = i;
+	    			
+	    			}
+	    		}
+	    	career[pos] = Career.SOFTWAREENGINEERING;
+	    	}else if(telematicCheckBox.isSelected()) {
+	    		boolean out = false;
+		    	int pos = 0;
+		    	for(int i=0; i < career.length && out ==false;i++) {
+		    	
+		    	if(career[i]==null) {
+		    			out = true;
+		    			pos = i;
+		    			
+		    			}
+		    		}
+		    	career[pos] = Career.TELEMATICENGINEERING;
+	    		
+	    	}else if(industrialCheckBox.isSelected()) {
+	    		boolean out = false;
+		    	int pos = 0;
+		    	for(int i=0; i < career.length && out ==false;i++) {
+		    	
+		    	if(career[i]==null) {
+		    			out = true;
+		    			pos = i;
+		    			
+		    			}
+		    		}
+		    	career[pos] = Career.INDUSTRIALINGEERING;
+	    	}
+	    	String date = dateTxT.getValue().toString();
+	    }
+	    
 	    
 	    
 }
