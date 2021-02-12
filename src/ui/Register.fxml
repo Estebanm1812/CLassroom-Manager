@@ -87,9 +87,9 @@
         </rowConstraints>
          <children>
             <Label text="Career:" translateX="160.0" />
-            <CheckBox mnemonicParsing="false" text="Software Engineering" translateX="20.0" GridPane.columnIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Telematic Engineering" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Industrial Engineering" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <CheckBox fx:id="softwareCheckBox" mnemonicParsing="false" text="Software Engineering" translateX="20.0" GridPane.columnIndex="1" />
+            <CheckBox fx:id="telematicCheckBox" mnemonicParsing="false" text="Telematic Engineering" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="industrialCheckBox" mnemonicParsing="false" text="Industrial Engineering" translateX="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <GridPane>
