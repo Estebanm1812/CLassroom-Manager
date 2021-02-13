@@ -164,7 +164,9 @@ public class ClassroomGUI {
 	    }
 	    @FXML
 	    public void loadStudentsList(ActionEvent event) throws IOException{
-	    
+	    	
+	    	if(Classroom.students.size()!=0) {
+	    	
 	    	String userName = txtUserName.getText();
 	    	String passWord = txtPassword.getText();
 	    	
@@ -188,13 +190,21 @@ public class ClassroomGUI {
 	    				mainBorderPanel.setCenter(addListPanel);
 	    			}else {
 	    			
-	    				Alert alert = new Alert(AlertType.INFORMATION);
-	    				alert.setTitle("Information Dialog");
-	    				alert.setHeaderText(null);
-	    				alert.setContentText("The information is wrong or the Student doesnt Exist, please verified");
-	    				alert.showAndWait();
+	    				Alert alert2 = new Alert(AlertType.INFORMATION);
+	    				alert2.setTitle("Information Dialog");
+	    				alert2.setHeaderText(null);
+	    				alert2.setContentText("The information is wrong or the Student doesnt Exist, please verified");
+	    				alert2.showAndWait();
 	    			}
-	    		}	
+	    		}
+	    	}else {
+	    		Alert alert2 = new Alert(AlertType.INFORMATION);
+				alert2.setTitle("Information Dialog");
+				alert2.setHeaderText(null);
+				alert2.setContentText("The information is wrong or the Student doesnt Exist, please verified");
+				alert2.showAndWait();
+	    		
+	    	}
 	    	}
 	    @FXML
 	    public void loadPfP(ActionEvent event)throws IOException {
