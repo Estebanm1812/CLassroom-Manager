@@ -39,5 +39,39 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	public String getBrowser() {
+		return browser;
+	}
+	public void setBrowser(String browser) {
+		this.browser = browser;
+	}
 	
+	public String getBirthday() {
+		return birthDay;
+	}
+	public void setBirthday(String birthday) {
+		birthday = birthDay;
+	}
+	public String getPictureLink() {
+		return pictureLink;
+	}
+	public void getPictureLink(String pictureLink) {
+		this.pictureLink = pictureLink;
+	}
+	public String getCareer() {
+		String careers = "";
+		for(int i=0; i < career.length;i++) {
+		
+			if(career[i]!=null) {
+			careers = career[i] + ", ";
+			}	
+		}
+		return careers;
+	}
 	}

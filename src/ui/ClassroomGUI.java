@@ -216,7 +216,10 @@ public class ClassroomGUI {
 	    String userName = registerNameTxt.getText();
 	    String password = registerPasswordTxt.getText();
 	    String pfp = profileTxT.getText();
+	    boolean genreWasSelected = false;
+	    boolean careerWasSelected = false;
 	    String genre = "Other";
+	    String browser = browserBox.getSelectionModel().getSelectedItem().toString();
 	    if(maleButton.isSelected()) {
 	    	
 	    	genre = "Male";
@@ -266,8 +269,28 @@ public class ClassroomGUI {
 		    		}
 		    	career[pos] = Career.INDUSTRIALINGEERING;
 	    	}
-	    	String date = dateTxT.getValue().toString();
+	    if(maleButton.isSelected() || femaleButton.isSelected() || otherButton.isSelected()) {
+	    	genreWasSelected = true;
 	    }
+	    if(softwareCheckBox.isSelected()||telematicCheckBox.isSelected()||industrialCheckBox.isSelected()) {
+	    	careerWasSelected = true;
+	    }
+	    
+	    	String date = dateTxT.getValue().toString();
+	    	if((registerNameTxt!= null )&& (registerPasswordTxt!=null )&& (profileTxT!=null) && (genreWasSelected==true)&&(dateTxT!=null)&&(careerWasSelected==true)) {
+	    		Classroom.addStudent(userName, password, career, browser, genre, date, pfp );
+	    		registerNameTxt.setText(null);
+	    		registerPasswordTxt.setText(null);
+	    		profileTxT.setText(null);
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+	    		alert.setTitle("Information Dialog");
+	    		alert.setHeaderText(null);
+	    		alert.setContentText("Your account has been successfully created");
+
+	    		alert.showAndWait();
+	    	}
+	    }
+	    
 	    
 	    
 	    

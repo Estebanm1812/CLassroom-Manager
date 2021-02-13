@@ -10,7 +10,7 @@ public class Classroom {
 	public Classroom() {
 		students = new ArrayList<Student>();
 	}
-	public void addStudent(String userName, String password, Career [] career,String genre, String birthday, String browser, String link ) {
+	public static void addStudent(String userName, String password, Career [] career,String genre, String birthday, String browser, String link ) {
 		
 		students.add(new Student(userName, password, genre, browser, career, birthday, link));
 		
