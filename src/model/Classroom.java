@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Classroom {
 
-	private static List<Student> students;
+	public static List<Student> students;
 	
 	public Classroom() {
 		students = new ArrayList<Student>();
@@ -28,7 +28,7 @@ public class Classroom {
 		
 		boolean passwordFound = false;
 		
-		for(int i=0; i <= students.size();i++) {
+		for(int i=0; i <= students.size() && passwordFound == false;i++) {
 		
 			if((students.get(i).getName()).equals(userName) == (true)) {
 				nameFound = true;

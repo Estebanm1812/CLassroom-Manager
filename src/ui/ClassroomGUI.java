@@ -167,6 +167,16 @@ public class ClassroomGUI {
 	    
 	    	String userName = txtUserName.getText();
 	    	String passWord = txtPassword.getText();
+	    	
+	    	if(userName.equals("")||passWord.equals("")) {
+	    		
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Information Dialog");
+				alert.setHeaderText(null);
+				alert.setContentText("please complete all the information requiered");
+				alert.showAndWait();
+	    		
+	    	}else {
 	    	boolean canContiue = Classroom.findStudent(userName,passWord);
 	    	
 	    	
@@ -183,7 +193,8 @@ public class ClassroomGUI {
 	    				alert.setHeaderText(null);
 	    				alert.setContentText("The information is wrong or the Student doesnt Exist, please verified");
 	    				alert.showAndWait();
-	    			}	
+	    			}
+	    		}	
 	    	}
 	    @FXML
 	    public void loadPfP(ActionEvent event)throws IOException {
@@ -205,6 +216,7 @@ public class ClassroomGUI {
 	    }
 	    @FXML
 	   public void returnToLogin(ActionEvent event) throws IOException {
+	    	
 	    FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("Login.fxml"));
 		    	
 		    	fxmlLoader4.setController(this);
@@ -286,7 +298,9 @@ public class ClassroomGUI {
 	    	
 	    	
 	    	if((registerNameTxt!= null)&& (registerPasswordTxT!=null )&& (profileTxT!=null) && (genreWasSelected==true)&&(dateTxT!=null)&&(careerWasSelected==true)) {
+	    	
 	    		Classroom.addStudent(userName, password, career, browser, genre, date, pfp );
+	    		
 	    		registerNameTxt.setText(null);
 	    		registerPasswordTxT.setText(null);
 	    		profileTxT.setText(null);
