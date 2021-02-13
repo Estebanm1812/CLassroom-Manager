@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -110,6 +111,7 @@ public class ClassroomGUI {
 	    @FXML
 	    private RadioButton otherButton;
 	    
+	    
 	    private Classroom classroom;
 	    
 	    Career [] career;
@@ -180,7 +182,7 @@ public class ClassroomGUI {
 	    		
 	    	}else {
 	    	boolean canContiue = Classroom.findStudent(userName,passWord);
-	    	
+	    	int position = Classroom.findPosition(userName,passWord);
 	    	
 	    			if(canContiue == true) {
 	    				FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("StudentsList.fxml"));
@@ -188,6 +190,10 @@ public class ClassroomGUI {
 	    				Parent addListPanel = fxmlLoader4.load();
 	    				mainBorderPanel.getChildren().clear();
 	    				mainBorderPanel.setCenter(addListPanel);
+	    				initializeStundentsList();
+	    				userNameLabel.setText(userName);;
+	    				Image image = new Image(Classroom.students.get(position).getPictureLink());
+	    			    pfpView.setImage(image);
 	    			}else {
 	    			
 	    				Alert alert2 = new Alert(AlertType.INFORMATION);

@@ -51,4 +51,41 @@ public class Classroom {
 		
 		return found;
 	}
+	public static int findPosition(String userName, String passWord) {
+		
+		
+boolean found = false;
+		
+		boolean nameFound = false;
+		
+		boolean passwordFound = false;
+		
+		int pos = 0;
+		
+		for(int i=0; i <= students.size() && (passwordFound == false) && (nameFound == false);i++) {
+		
+			if((students.get(i).getName()).equals(userName) == (true)) {
+				nameFound = true;
+			}else {
+				nameFound = false;
+			}
+			
+			if ((students.get(i).getPassword()).equals(passWord) == (true)){
+				passwordFound = true;
+			}else {
+				passwordFound = false;
+				
+			}
+			if((nameFound == true) && (passwordFound == true)) {
+				pos = i;
+				}
+			}
+			return pos;
+		}
+		 {
+			
+		
+		
+		
+	}
 }
