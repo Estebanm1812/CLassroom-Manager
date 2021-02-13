@@ -245,7 +245,7 @@ public class ClassroomGUI {
 	    }
 	    
 	    @FXML
-	    void createStudent(ActionEvent event)throws IOException {
+	    public void createStudent(ActionEvent event)throws IOException {
 	    	
 	    String userName = registerNameTxt.getText();
 	    String password = registerPasswordTxT.getText();
