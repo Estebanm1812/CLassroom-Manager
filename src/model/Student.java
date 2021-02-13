@@ -22,7 +22,7 @@ public class Student {
 		this.password = password;
 		this.genre = genre;
 		this.browser = browser;
-		this.career[2] = career[2];
+		this.career = career;
 		this.birthDay = birthDay;
 		this.pictureLink = pictureLink;
 		

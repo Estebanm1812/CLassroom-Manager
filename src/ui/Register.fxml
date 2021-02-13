@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -51,7 +50,7 @@
             <Button contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadPfP" prefHeight="30.0" prefWidth="75.0" text="Load File" textAlignment="JUSTIFY" translateX="40.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <TextField fx:id="registerNameTxt" GridPane.columnIndex="1" />
             <TextField fx:id="profileTxT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <PasswordField fx:id="registerPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="registerPasswordTxT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <GridPane>

@@ -28,7 +28,7 @@ public class Classroom {
 		
 		boolean passwordFound = false;
 		
-		for(int i=1; i <= students.size();i++) {
+		for(int i=0; i <= students.size();i++) {
 		
 			if((students.get(i).getName()).equals(userName) == (true)) {
 				nameFound = true;

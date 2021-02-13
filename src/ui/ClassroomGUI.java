@@ -2,6 +2,7 @@ package ui;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -46,9 +47,9 @@ public class ClassroomGUI {
 	   @FXML
 	    private TextField registerNameTxt;
 
-	    @FXML
-	    private PasswordField registerPasswordTxt;
-
+	   @FXML
+	    private TextField registerPasswordTxT;
+	   
 	    @FXML
 	    private TextField profileTxT;
 
@@ -123,7 +124,7 @@ public class ClassroomGUI {
 	    	
 	    }*/
 	    @SuppressWarnings("unused")
-		private void initializeStundentsList(){
+	    	private void initializeStundentsList(){
 	    	ObservableList<Student> observableList;
 	    	observableList = FXCollections.observableArrayList(classroom.getStudents());
 	    	
@@ -134,9 +135,12 @@ public class ClassroomGUI {
 	    	birthdayTable.setCellValueFactory(new PropertyValueFactory<Student,String>("Birthday"));
 	    	browserTable.setCellValueFactory(new PropertyValueFactory<Student,String>("Browser"));
 	    }
+	    public Pane getPane() {
+	    	return mainPane;
+	    }
 	    
 	    @FXML
-	    void loadRegister(ActionEvent event) throws IOException {
+	   public void loadRegister(ActionEvent event) throws IOException {
 	    FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("Register.fxml"));
 	    	
 	    	fxmlLoader3.setController(this);
@@ -159,7 +163,7 @@ public class ClassroomGUI {
 	    	
 	    }
 	    @FXML
-	    void loadStudentsList(ActionEvent event) throws IOException{
+	    public void loadStudentsList(ActionEvent event) throws IOException{
 	    
 	    	String userName = txtUserName.getText();
 	    	String passWord = txtPassword.getText();
@@ -182,7 +186,7 @@ public class ClassroomGUI {
 	    			}	
 	    	}
 	    @FXML
-	    void loadPfP(ActionEvent event)throws IOException {
+	    public void loadPfP(ActionEvent event)throws IOException {
 	    	
 	    	FileChooser fileChooser = new FileChooser();
 	    	fileChooser.getExtensionFilters().addAll( 
@@ -200,13 +204,14 @@ public class ClassroomGUI {
 	        
 	    }
 	    @FXML
-	    void returnToLogin(ActionEvent event) throws IOException {
+	   public void returnToLogin(ActionEvent event) throws IOException {
 	    FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("Login.fxml"));
 		    	
 		    	fxmlLoader4.setController(this);
 		    	Parent loginPanel = fxmlLoader4.load();
-		    	mainBorderPanel.getChildren().clear();
-		    	mainBorderPanel.setCenter(loginPanel);
+		    	
+		    	mainPane.getChildren().setAll(loginPanel);
+		    	
 		    		
 	    }
 	    
@@ -214,12 +219,13 @@ public class ClassroomGUI {
 	    void createStudent(ActionEvent event)throws IOException {
 	    	
 	    String userName = registerNameTxt.getText();
-	    String password = registerPasswordTxt.getText();
+	    String password = registerPasswordTxT.getText();
 	    String pfp = profileTxT.getText();
 	    boolean genreWasSelected = false;
 	    boolean careerWasSelected = false;
 	    String genre = "Other";
-	    String browser = browserBox.getSelectionModel().getSelectedItem().toString();
+	    String browser = " ";
+	    browser	= browserBox.getValue().toString();
 	    if(maleButton.isSelected()) {
 	    	
 	    	genre = "Male";
@@ -277,10 +283,12 @@ public class ClassroomGUI {
 	    }
 	    
 	    	String date = dateTxT.getValue().toString();
-	    	if((registerNameTxt!= null )&& (registerPasswordTxt!=null )&& (profileTxT!=null) && (genreWasSelected==true)&&(dateTxT!=null)&&(careerWasSelected==true)) {
+	    	
+	    	
+	    	if((registerNameTxt!= null)&& (registerPasswordTxT!=null )&& (profileTxT!=null) && (genreWasSelected==true)&&(dateTxT!=null)&&(careerWasSelected==true)) {
 	    		Classroom.addStudent(userName, password, career, browser, genre, date, pfp );
 	    		registerNameTxt.setText(null);
-	    		registerPasswordTxt.setText(null);
+	    		registerPasswordTxT.setText(null);
 	    		profileTxT.setText(null);
 	    		Alert alert = new Alert(AlertType.INFORMATION);
 	    		alert.setTitle("Information Dialog");
@@ -288,6 +296,11 @@ public class ClassroomGUI {
 	    		alert.setContentText("Your account has been successfully created");
 
 	    		alert.showAndWait();
+	    	}else {
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+	    		alert.setTitle("Information Dialog");
+	    		alert.setHeaderText(null);
+	    		alert.setContentText("Your account wasnt successfully created");
 	    	}
 	    }
 	    

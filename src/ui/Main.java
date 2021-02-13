@@ -12,6 +12,7 @@ public class Main extends Application{
 	private Classroom classRoom;
 	private ClassroomGUI classroomGUI;
 	
+	
 	public Main(){
 		classRoom = new Classroom();
 		classroomGUI = new ClassroomGUI(classRoom);
@@ -27,11 +28,13 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("Login.fxml"));
+		FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("main-pane.fxml"));
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("Login.fxml"));
 		
 		fxmlLoader2.setController(classroomGUI);
 		
-	
+		 fxmlLoader1.setController(classroomGUI);
+	        Parent loginPane = fxmlLoader1.load();
 		
 		Parent root2 = fxmlLoader2.load();
 		
@@ -42,6 +45,7 @@ public class Main extends Application{
 		primaryStage.setScene(scene2);
 		primaryStage.show();
 		
+		classroomGUI.getPane().getChildren().setAll(loginPane);
 		
 		
 	}
