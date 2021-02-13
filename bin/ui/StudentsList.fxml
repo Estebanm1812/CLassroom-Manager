@@ -40,10 +40,10 @@
       <TableView fx:id="studentsLists" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="userNameTable" prefWidth="111.0" text="Username" />
-          <TableColumn fx:id="genderTable" prefWidth="140.0" text="Gender" />
+          <TableColumn fx:id="genderTable" prefWidth="140.0" text="Browser" />
             <TableColumn fx:id="careerTable" prefWidth="108.0" text="Career" />
-            <TableColumn fx:id="birthdayTable" prefWidth="116.0" text="Birthday" />
-            <TableColumn fx:id="browserTable" prefWidth="124.0" text="Browser" />
+            <TableColumn fx:id="birthdayTable" prefWidth="116.0" text="Gender" />
+            <TableColumn fx:id="browserTable" prefWidth="124.0" text="Birthday" />
         </columns>
       </TableView>
    </center>

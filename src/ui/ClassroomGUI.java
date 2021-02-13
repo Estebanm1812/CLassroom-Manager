@@ -121,10 +121,10 @@ public class ClassroomGUI {
 	    	classroom = cr;
 	    	career = new Career[2];
 	    }
-	    /*
+	    
 	    public void initialize(){
 	    	
-	    }*/
+	    }
 	    @SuppressWarnings("unused")
 	    	private void initializeStundentsList(){
 	    	ObservableList<Student> observableList;
@@ -191,7 +191,8 @@ public class ClassroomGUI {
 	    				mainBorderPanel.getChildren().clear();
 	    				mainBorderPanel.setCenter(addListPanel);
 	    				initializeStundentsList();
-	    				userNameLabel.setText(userName);;
+	    				userNameLabel.setText(userName);
+	    				System.out.println(Classroom.students.get(position).getPictureLink());
 	    				Image image = new Image(Classroom.students.get(position).getPictureLink());
 	    			    pfpView.setImage(image);
 	    			}else {
